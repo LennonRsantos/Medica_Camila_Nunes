@@ -130,6 +130,6 @@ A conversão usada é a ação "Contato" do Google Ads. O ID e o rótulo ficam n
 
 ## Créditos
 
-- Desenvolvido por [Lennon Santos](https://linkslennonrsantos.vercel.app/).
+- Desenvolvido por [Lennon Santos](https://lennonrsantos.vercel.app/links).
 - Os efeitos de órbita, linhas animadas, spotlight e rodapé foram inspirados em componentes da comunidade [21st.dev](https://21st.dev) e reimplementados em HTML, Sass e JavaScript.
 - Conteúdo, textos e imagens: Dra. Camila Nunes — CRM DF 29940 | RQE 26577.
