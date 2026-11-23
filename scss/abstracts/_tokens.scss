@@ -28,8 +28,8 @@ $photo-hero-bg: #d8d2da;
 $photo-about-bg: #1e4d5a;
 
 // ---------- Type ----------
-$font-display: "Young Serif", Georgia, "Times New Roman", serif;
-$font-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+$font-display: "Young Serif", "Young Serif Fallback", Georgia, "Times New Roman", serif;
+$font-body: "Hanken Grotesk", "Hanken Grotesk Fallback", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
 // Fluid scale: compact on phones (values at 390px → 1440px in comments)
 $step--1: 0.875rem;

@@ -17,6 +17,26 @@
   src: url("assets/fonts/young-serif-latin.woff2") format("woff2");
 }
 
+// Fallbacks sized to the web fonts' metrics, so the swap barely moves text (CLS).
+// Values from glyph advances of pt-BR text vs Georgia/Arial (fontTools); recompute if a font changes.
+@font-face {
+  font-family: "Young Serif Fallback";
+  src: local("Georgia");
+  size-adjust: 114.53%;
+  ascent-override: 91.33%;
+  descent-override: 31.96%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Hanken Grotesk Fallback";
+  src: local("Arial");
+  size-adjust: 99.42%;
+  ascent-override: 100.58%;
+  descent-override: 30.48%;
+  line-gap-override: 0%;
+}
+
 body {
   font-family: $font-body;
   font-size: $step-0;

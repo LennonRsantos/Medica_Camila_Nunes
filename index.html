@@ -22,11 +22,12 @@
     gtag('js', new Date());
     gtag('config', 'AW-18553715600', { allow_ad_personalization_signals: false });
 
-    // gtag.js (~66 KB) loads after first interaction or 3.5 s after load, off the critical path.
-    // Calls above (and conversions from script.js) wait in dataLayer until it arrives.
+    // gtag.js (~66 KB) loads on first interaction only, off the critical path.
+    // Calls above (and conversions from script.js) wait in dataLayer until it arrives;
+    // CTAs open WhatsApp in a new tab, so the page stays alive to send them.
     (function () {
       var loaded = false;
-      var events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
+      var events = ['pointerdown', 'keydown', 'scroll', 'touchstart', 'mousemove'];
       function loadGtag() {
         if (loaded) return;
         loaded = true;
@@ -37,7 +38,6 @@
         document.head.appendChild(s);
       }
       events.forEach(function (e) { addEventListener(e, loadGtag, { once: true, passive: true }); });
-      addEventListener('load', function () { setTimeout(loadGtag, 3500); });
     })();
   </script>
 
@@ -302,8 +302,8 @@
         <figure class="hero-media">
           <div class="hero-photo">
             <picture>
-              <source type="image/avif" srcset="assets/camila-nunes-hero-480.avif 480w, assets/camila-nunes-hero-927.avif 927w" sizes="(min-width: 720px) 500px, 92vw">
-              <source type="image/webp" srcset="assets/camila-nunes-hero-480.webp 480w, assets/camila-nunes-hero-927.webp 927w" sizes="(min-width: 720px) 500px, 92vw">
+              <source type="image/avif" srcset="assets/camila-nunes-hero-480.avif 480w, assets/camila-nunes-hero-600.avif 600w, assets/camila-nunes-hero-927.avif 927w" sizes="(min-width: 720px) 500px, 92vw">
+              <source type="image/webp" srcset="assets/camila-nunes-hero-480.webp 480w, assets/camila-nunes-hero-600.webp 600w, assets/camila-nunes-hero-927.webp 927w" sizes="(min-width: 720px) 500px, 92vw">
               <img src="assets/camila-nunes-hero.jpg"
                    alt="Dra. Camila Nunes - Médica de Família e Comunidade"
                    width="927" height="907" fetchpriority="high">
@@ -374,30 +374,30 @@
         <div class="care-map">
           <!-- Swipeable row on mobile; "display: contents" from tablet up -->
           <div class="care-branches" data-rail data-rail-label="abordagem-titulo">
-            <article class="care-node care-node-a">
+            <div class="care-node care-node-a">
               <span class="care-icon"><i class="bi bi-heart" aria-hidden="true"></i></span>
               <h3>Atendimento como um todo</h3>
               <p>Visão sistêmica: hormônios, metabolismo, rotina, saúde mental e queixas físicas integradas em um único olhar.</p>
-            </article>
+            </div>
 
-            <article class="care-node care-node-b">
+            <div class="care-node care-node-b">
               <span class="care-icon"><i class="bi bi-diagram-3" aria-hidden="true"></i></span>
               <h3>Coordenação do cuidado</h3>
               <p>Organização inteligente dos seus exames, especialistas e tratamentos para que nada passe despercebido.</p>
-            </article>
+            </div>
 
-            <article class="care-node care-node-c">
+            <div class="care-node care-node-c">
               <span class="care-icon"><i class="bi bi-journal-medical" aria-hidden="true"></i></span>
               <h3>Medicina baseada em evidências</h3>
               <p>Condutas rigorosamente atualizadas pela ciência, sem modismos ou tratamentos desnecessários.</p>
-            </article>
+            </div>
           </div>
 
-          <article class="care-node care-node-center">
+          <div class="care-node care-node-center">
             <span class="care-icon"><i class="bi bi-person-heart" aria-hidden="true"></i></span>
             <h3>Paciente no centro</h3>
             <p>Você é a protagonista das decisões sobre o seu corpo. Planos que respeitam seu ritmo, rotina e valores.</p>
-          </article>
+          </div>
         </div>
       </div>
     </section>

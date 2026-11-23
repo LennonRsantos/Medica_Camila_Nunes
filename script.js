@@ -77,6 +77,9 @@ if (cookieBanner) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // First layout reads wait until the browser has painted once, so they never force a reflow
+  const afterPaint = (fn) => requestAnimationFrame(() => setTimeout(fn));
+
   // Dynamic year
   const yearEl = document.getElementById('currentYear');
   if (yearEl) {
@@ -239,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hidden = reviewSyncs.map((r) => r.measure());
     reviewSyncs.forEach((r, i) => r.apply(hidden[i]));
   };
-  requestAnimationFrame(syncReviews);
+  afterPaint(syncReviews);
   if (document.fonts) document.fonts.ready.then(syncReviews);
   reviewQuery.addEventListener('change', syncReviews);
   window.addEventListener('resize', syncReviews);
@@ -334,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
     rail.addEventListener('scroll', () => {
       if (!frame) frame = requestAnimationFrame(updateDots);
     }, { passive: true });
-    updateDots();
+    afterPaint(updateDots);
 
     // Mouse/pen drag (touch already scrolls natively): follow the pointer, then snap to a card
     let drag = null;
@@ -580,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  updateNav();
+  afterPaint(updateNav);
   window.addEventListener('scroll', () => {
     if (!ticking) {
       ticking = true;
@@ -691,7 +694,7 @@ document.addEventListener('DOMContentLoaded', () => {
       footerName.classList.add('is-revealed');
     };
     window.addEventListener('scroll', revealFooter, { passive: true });
-    revealFooter();
+    afterPaint(revealFooter);
   }
 
   // Care map: center, lines, items and dots play as one connected sequence
