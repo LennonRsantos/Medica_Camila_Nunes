@@ -43,6 +43,11 @@ img {
   height: auto;
 }
 
+// <picture> only picks the source; the <img> keeps laying out as a direct child
+picture {
+  display: contents;
+}
+
 a {
   color: inherit;
 }

@@ -1,5 +1,5 @@
 // Google Ads: every WhatsApp CTA carries data-cta ("hero", "blog-menopausa"…), so one delegated
-// listener reports them all as a conversion. gtag.js is loaded in the <head>.
+// listener reports them all as a conversion. gtag.js is lazy-loaded from the <head>.
 // Kept outside DOMContentLoaded so the early return below (reduced motion) never skips it.
 // Conversion action "Contato" (Google Ads > Goals > Conversions): conversion ID / conversion label.
 const ADS_CONVERSION = 'AW-18553715600/-SO2CK7_prEdEJD3jI9F';
@@ -227,13 +227,19 @@ document.addEventListener('DOMContentLoaded', () => {
     card.querySelector('.review-text').after(more);
     setExpanded(false);
 
-    return () => {
-      if (!reviewQuery.matches) setExpanded(false);
-      more.hidden = !card.classList.contains('is-expanded') && text.scrollHeight <= text.clientHeight + 1;
+    return {
+      reset: () => { if (!reviewQuery.matches) setExpanded(false); },
+      measure: () => !card.classList.contains('is-expanded') && text.scrollHeight <= text.clientHeight + 1,
+      apply: (hide) => { more.hidden = hide; },
     };
   });
-  const syncReviews = () => reviewSyncs.forEach((sync) => sync());
-  syncReviews();
+  // Writes, then all reads, then writes: one layout pass instead of one per card (no forced reflow loop)
+  const syncReviews = () => {
+    reviewSyncs.forEach((r) => r.reset());
+    const hidden = reviewSyncs.map((r) => r.measure());
+    reviewSyncs.forEach((r, i) => r.apply(hidden[i]));
+  };
+  requestAnimationFrame(syncReviews);
   if (document.fonts) document.fonts.ready.then(syncReviews);
   reviewQuery.addEventListener('change', syncReviews);
   window.addEventListener('resize', syncReviews);
@@ -395,7 +401,8 @@ document.addEventListener('DOMContentLoaded', () => {
         key,
         panel,
         title: panel.querySelector('h3').textContent.trim(),
-        icon: panel.querySelector('.care-icon i').className,
+        // outerHTML: the icon is an <i> in dev preview and an <svg> in the build
+        icon: panel.querySelector('.care-icon .bi').outerHTML,
       };
     });
 
@@ -405,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const rad = (angles[key] * Math.PI) / 180;
       return `<button type="button" class="orbit-node" data-key="${key}"
         style="left:${50 + 36 * Math.cos(rad)}%;top:${50 + 36 * Math.sin(rad)}%;--d:${0.8 + i * 0.15}s">
-        <span class="orbit-node-inner"><span class="orbit-node-icon"><i class="${icon}" aria-hidden="true"></i></span>
+        <span class="orbit-node-inner"><span class="orbit-node-icon">${icon}</span>
         <span class="orbit-node-label">${title}</span></span></button>`;
     }).join('');
     const spokes = items.slice(1)
@@ -414,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
     orbit.innerHTML = `<span class="orbit-ring" aria-hidden="true"></span>
       <div class="orbit-track">${spokes}${nodes}</div>
       <button type="button" class="orbit-center" data-key="center">
-        <i class="${items[0].icon}" aria-hidden="true"></i><span>${items[0].title}</span></button>`;
+        ${items[0].icon}<span>${items[0].title}</span></button>`;
     orbitMap.prepend(orbit);
 
     const tabs = items.map(({ key }) => orbit.querySelector(`[data-key="${key}"]`));

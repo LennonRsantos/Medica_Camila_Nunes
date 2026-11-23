@@ -1,5 +1,22 @@
 @use "../abstracts" as *;
 
+// Self-hosted Google Fonts (latin subset covers pt-BR). Paths are relative to styles.css.
+@font-face {
+  font-family: "Hanken Grotesk";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("assets/fonts/hanken-grotesk-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Young Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/fonts/young-serif-latin.woff2") format("woff2");
+}
+
 body {
   font-family: $font-body;
   font-size: $step-0;

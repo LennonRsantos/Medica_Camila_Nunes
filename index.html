@@ -21,43 +21,72 @@
     gtag('set', 'ads_data_redaction', true);
     gtag('js', new Date());
     gtag('config', 'AW-18553715600', { allow_ad_personalization_signals: false });
-  </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18553715600"></script>
 
-  <title>Dra. Camila Nunes - Saúde Integral da Mulher</title>
-  <meta name="description" content="Dra. Camila Nunes - Médica de Família e Comunidade especializada no Cuidado Integral da Saúde da Mulher em Águas Claras - DF.">
+    // gtag.js (~66 KB) loads after first interaction or 3.5 s after load, off the critical path.
+    // Calls above (and conversions from script.js) wait in dataLayer until it arrives.
+    (function () {
+      var loaded = false;
+      var events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
+      function loadGtag() {
+        if (loaded) return;
+        loaded = true;
+        events.forEach(function (e) { removeEventListener(e, loadGtag); });
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18553715600';
+        document.head.appendChild(s);
+      }
+      events.forEach(function (e) { addEventListener(e, loadGtag, { once: true, passive: true }); });
+      addEventListener('load', function () { setTimeout(loadGtag, 3500); });
+    })();
+  </script>
+
+  <title>Dra. Camila Nunes | Saúde da Mulher em Águas Claras - DF</title>
+  <meta name="description" content="Médica de Família e Comunidade em Águas Claras-DF. Cuidado integral da saúde da mulher, consultas de até 1h30, presencial ou online. Agende pelo WhatsApp.">
   <meta name="theme-color" content="#F7F3EC">
   <meta name="color-scheme" content="light">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://dracamilanunesantos.com.br/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <!-- Ao publicar: adicionar <link rel="canonical">, og:url e "url" no JSON-LD com o domínio final -->
+
+  <!-- Self-hosted fonts (latin subset), preloaded so text does not wait on the CSS -->
+  <link rel="preload" href="assets/fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/young-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Open Graph (prévia no WhatsApp, Facebook, LinkedIn) -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Dra. Camila Nunes">
-  <meta property="og:title" content="Dra. Camila Nunes - Saúde Integral da Mulher">
-  <meta property="og:description" content="Dra. Camila Nunes - Médica de Família e Comunidade especializada no Cuidado Integral da Saúde da Mulher em Águas Claras - DF.">
-  <meta property="og:image" content="https://i.imgur.com/NuYQsXL.jpeg">
+  <meta property="og:url" content="https://dracamilanunesantos.com.br/">
+  <meta property="og:title" content="Dra. Camila Nunes | Saúde da Mulher em Águas Claras - DF">
+  <meta property="og:description" content="Médica de Família e Comunidade em Águas Claras-DF. Cuidado integral da saúde da mulher, consultas de até 1h30, presencial ou online. Agende pelo WhatsApp.">
+  <meta property="og:image" content="https://dracamilanunesantos.com.br/assets/camila-nunes-hero.jpg">
   <meta property="og:image:width" content="927">
   <meta property="og:image:height" content="907">
   <meta property="og:image:alt" content="Dra. Camila Nunes - Médica de Família e Comunidade">
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Dra. Camila Nunes - Saúde Integral da Mulher">
-  <meta name="twitter:description" content="Dra. Camila Nunes - Médica de Família e Comunidade especializada no Cuidado Integral da Saúde da Mulher em Águas Claras - DF.">
-  <meta name="twitter:image" content="https://i.imgur.com/NuYQsXL.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dra. Camila Nunes | Saúde da Mulher em Águas Claras - DF">
+  <meta name="twitter:description" content="Médica de Família e Comunidade em Águas Claras-DF. Cuidado integral da saúde da mulher, consultas de até 1h30, presencial ou online. Agende pelo WhatsApp.">
+  <meta name="twitter:image" content="https://dracamilanunesantos.com.br/assets/camila-nunes-hero.jpg">
 
   <!-- Schema.org Physician: only data shown on the page -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Physician",
+    "@id": "https://dracamilanunesantos.com.br/#medica",
+    "url": "https://dracamilanunesantos.com.br/",
     "name": "Dra. Camila Nunes",
     "description": "Médica de Família e Comunidade especializada no Cuidado Integral da Saúde da Mulher em Águas Claras - DF.",
-    "image": "https://i.imgur.com/NuYQsXL.jpeg",
+    "image": "https://dracamilanunesantos.com.br/assets/camila-nunes-hero.jpg",
     "medicalSpecialty": "PrimaryCare",
+    "areaServed": [
+      { "@type": "City", "name": "Águas Claras, DF" },
+      { "@type": "City", "name": "Brasília, DF" }
+    ],
+    "knowsLanguage": "pt-BR",
     "identifier": [
       { "@type": "PropertyValue", "propertyID": "CRM-DF", "value": "29940" },
       { "@type": "PropertyValue", "propertyID": "RQE", "value": "26577" }
@@ -89,6 +118,25 @@
       { "@type": "Offer", "price": "500", "priceCurrency": "BRL", "itemOffered": { "@type": "MedicalProcedure", "name": "Inserção / Retirada de Implanon" } },
       { "@type": "Offer", "price": "150", "priceCurrency": "BRL", "itemOffered": { "@type": "MedicalProcedure", "name": "Exame Preventivo (Papanicolau)" } }
     ]
+  }
+  </script>
+
+  <!-- Schema.org MedicalWebPage: page content written and reviewed by the physician above -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "@id": "https://dracamilanunesantos.com.br/#pagina",
+    "url": "https://dracamilanunesantos.com.br/",
+    "name": "Dra. Camila Nunes | Saúde da Mulher em Águas Claras - DF",
+    "inLanguage": "pt-BR",
+    "about": { "@type": "Thing", "name": "Saúde integral da mulher" },
+    "specialty": "https://schema.org/PrimaryCare",
+    "audience": { "@type": "PeopleAudience", "suggestedGender": "female" },
+    "author": { "@id": "https://dracamilanunesantos.com.br/#medica" },
+    "reviewedBy": { "@id": "https://dracamilanunesantos.com.br/#medica" },
+    "lastReviewed": "2026-11-23",
+    "mainEntity": { "@id": "https://dracamilanunesantos.com.br/#medica" }
   }
   </script>
 
@@ -166,13 +214,7 @@
   }
   </script>
 
-  <!-- Google Fonts: Young Serif & Hanken Grotesk -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Young+Serif&display=swap">
-
-  <!-- Bootstrap Icons -->
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <!-- Bootstrap Icons: dev preview only; scripts/build.mjs inlines the SVGs and drops this link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous">
 
   <link rel="stylesheet" href="styles.css">
@@ -259,9 +301,13 @@
 
         <figure class="hero-media">
           <div class="hero-photo">
-            <img src="assets/camila-nunes-hero.jpg"
-                 alt="Dra. Camila Nunes - Médica de Família e Comunidade"
-                 width="927" height="907" fetchpriority="high">
+            <picture>
+              <source type="image/avif" srcset="assets/camila-nunes-hero-480.avif 480w, assets/camila-nunes-hero-927.avif 927w" sizes="(min-width: 720px) 500px, 92vw">
+              <source type="image/webp" srcset="assets/camila-nunes-hero-480.webp 480w, assets/camila-nunes-hero-927.webp 927w" sizes="(min-width: 720px) 500px, 92vw">
+              <img src="assets/camila-nunes-hero.jpg"
+                   alt="Dra. Camila Nunes - Médica de Família e Comunidade"
+                   width="927" height="907" fetchpriority="high">
+            </picture>
           </div>
           <figcaption class="hero-note">
             <span class="hero-note-icon"><i class="bi bi-clock" aria-hidden="true"></i></span>
@@ -279,9 +325,12 @@
       <div class="container about-grid">
         <figure class="about-media">
           <div class="about-photo">
-            <img src="assets/camila-nunes-sobre.jpg"
-                 alt="Foto Dra. Camila Nunes"
-                 width="687" height="1024" loading="lazy">
+            <picture>
+              <source type="image/webp" srcset="assets/camila-nunes-sobre-480.webp 480w, assets/camila-nunes-sobre-687.webp 687w" sizes="(min-width: 960px) 480px, 92vw">
+              <img src="assets/camila-nunes-sobre.jpg"
+                   alt="Retrato da Dra. Camila Nunes, médica de Família e Comunidade"
+                   width="687" height="1024" loading="lazy">
+            </picture>
           </div>
           <figcaption class="credential">
             <i class="bi bi-patch-check" aria-hidden="true"></i>

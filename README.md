@@ -98,7 +98,7 @@ Depois, abra o `index.html` no navegador ou use uma extensão como o Live Server
 npm run build
 ```
 
-Esse comando compila `scss/main.scss` em `styles.css` (minificado) e copia o site para a pasta `dist/`.
+Esse comando compila `scss/main.scss` em `styles.css` (minificado) e copia o site para a pasta `dist/`. No build, os ícones Bootstrap Icons viram um sprite SVG embutido no HTML (sem CSS nem fonte de ícones externa). Abrindo o `index.html` direto, sem build, os ícones vêm do CDN.
 
 Na Vercel, o build roda automaticamente a cada push na branch `main`. A pasta `dist/` é publicada, conforme o [`vercel.json`](vercel.json).
 
@@ -112,11 +112,11 @@ Na Vercel, o build roda automaticamente a cada push na branch `main`. A pasta `d
 | Dados para o Google (horário, local, preços) | Bloco `Physician` no `<head>` do `index.html` |
 | Perguntas frequentes | Seção `#faq` e bloco `FAQPage` no `<head>` — mantenha os dois iguais |
 
-Ao configurar o domínio definitivo, adicione `<link rel="canonical">` e `og:url` no `<head>`. Há um comentário no próprio arquivo indicando o local.
+O domínio `https://dracamilanunesantos.com.br` aparece em `canonical`, `og:url`, `og:image`, JSON-LD, `robots.txt`, `sitemap.xml` e `llms.txt`. Se o domínio mudar, troque em todos. Ao editar conteúdo, atualize `lastmod` no `sitemap.xml` e `lastReviewed` no bloco `MedicalWebPage`.
 
 ### Medição de cliques
 
-O site usa a tag do Google Ads (`gtag.js`, ID `AW-18553715600`), carregada no `<head>` do `index.html`.
+O site usa a tag do Google Ads (`gtag.js`, ID `AW-18553715600`), configurada no `<head>` do `index.html`. O script só é baixado na primeira interação (toque, rolagem, tecla) ou 3,5 s após o carregamento, para não pesar no carregamento inicial.
 
 Todos os botões de WhatsApp têm o atributo `data-cta` (ex.: `hero`, `consulta-inicial`, `blog-menopausa`). No início do `script.js`, um único listener envia cada clique nesses botões como conversão (`trackConversion`), com o nome do botão no parâmetro `cta`. Novos botões só precisam do atributo `data-cta`.
 

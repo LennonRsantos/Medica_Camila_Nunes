@@ -1,12 +1,40 @@
 // Copies the deployable site into dist/ (Vercel's output directory, see vercel.json).
 // Runs after Sass has compiled styles.css; only these files are published.
-import { cpSync, mkdirSync, rmSync } from 'node:fs';
+// HTML pages get their Bootstrap Icons as an inline SVG sprite, so the icon font CSS (render-blocking) is not shipped.
+import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 
 const out = 'dist';
-const files = ['index.html', 'privacidade.html', 'styles.css', 'script.js', 'assets'];
+const pages = ['index.html', 'privacidade.html'];
+const files = ['styles.css', 'script.js', 'assets', 'robots.txt', 'sitemap.xml', 'llms.txt'];
+
+const iconCss = /\s*<!-- Bootstrap Icons[^>]*-->\s*<link rel="stylesheet" href="https:\/\/cdn\.jsdelivr\.net\/npm\/bootstrap-icons[^>]*>/;
+const iconTag = /<i class="bi bi-([a-z0-9-]+)([^"]*)" aria-hidden="true"><\/i>/g;
+const svgCache = new Map();
+
+// Each icon's paths go once into a hidden sprite; every use is a small <svg><use></svg>
+const symbol = (name) => {
+  const raw = readFileSync(`node_modules/bootstrap-icons/icons/${name}.svg`, 'utf8');
+  const [, viewBox, body] = raw.match(/<svg[^>]*?(viewBox="[^"]+")[^>]*>([\s\S]*)<\/svg>/);
+  return `<symbol id="bi-${name}" ${viewBox}>${body.replace(/\s*\n\s*/g, '')}</symbol>`;
+};
+
+const svg = (name, extra) => {
+  if (!svgCache.has(name)) svgCache.set(name, symbol(name));
+  return `<svg class="bi bi-${name}${extra}" aria-hidden="true" focusable="false"><use href="#bi-${name}"/></svg>`;
+};
 
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out);
 files.forEach((file) => cpSync(file, `${out}/${file}`, { recursive: true }));
 
-console.log(`Site copied to ${out}/: ${files.join(', ')}`);
+pages.forEach((page) => {
+  const html = readFileSync(page, 'utf8');
+  if (!iconCss.test(html)) throw new Error(`${page}: Bootstrap Icons <link> not found`);
+  svgCache.clear();
+  const built = html.replace(iconCss, '').replace(iconTag, (_, name, extra) => svg(name, extra));
+  if (/<i class="bi|bootstrap-icons/.test(built)) throw new Error(`${page}: icon left unconverted`);
+  const sprite = `<svg width="0" height="0" style="position:absolute" aria-hidden="true">${[...svgCache.values()].join('')}</svg>`;
+  writeFileSync(`${out}/${page}`, built.replace(/<body([^>]*)>/, (body) => `${body}\n  ${sprite}`));
+});
+
+console.log(`Site built in ${out}/: ${[...pages, ...files].join(', ')}`);

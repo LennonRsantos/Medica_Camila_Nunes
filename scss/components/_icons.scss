@@ -1,6 +1,14 @@
-// Bootstrap Icons font (loaded in index.html).
-// Glyphs inherit the parent's font-size and color; tiles set both.
+// Bootstrap Icons: inline SVGs in the build (scripts/build.mjs), icon font in dev preview.
+// Both inherit the parent's font-size and color; tiles set both.
 .bi {
   flex: none;
   line-height: 1;
+}
+
+svg.bi {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.125em;
 }
