@@ -100,6 +100,14 @@ npm run build
 
 Esse comando compila `scss/main.scss` em `styles.css` (minificado) e copia o site para a pasta `dist/`. No build, os ícones Bootstrap Icons viram um sprite SVG embutido no HTML (sem CSS nem fonte de ícones externa). Abrindo o `index.html` direto, sem build, os ícones vêm do CDN.
 
+### Fontes (subset)
+
+As fontes em `assets/fonts/` já vêm reduzidas aos caracteres do português (Latin-1 + aspas, travessão, reticências). Para gerar de novo a partir do arquivo original (precisa de `pip install fonttools brotli`):
+
+```bash
+python -m fontTools.subset ORIGINAL.woff2 --unicodes="U+0020-007E,U+00A0-00FF,U+2013-2014,U+2018-201E,U+2022,U+2026,U+20AC" --flavor=woff2 --layout-features="kern,liga,calt,ccmp,locl,mark,mkmk" --no-hinting --desubroutinize --output-file=assets/fonts/NOME.woff2
+```
+
 Na Vercel, o build roda automaticamente a cada push na branch `main`. A pasta `dist/` é publicada, conforme o [`vercel.json`](vercel.json).
 
 ## Personalização

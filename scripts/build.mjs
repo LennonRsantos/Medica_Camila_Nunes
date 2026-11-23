@@ -38,7 +38,8 @@ pages.forEach((page) => {
   const built = html.replace(iconCss, '').replace(cssLink, () => `<style>${css}</style>`).replace(iconTag, (_, name, extra) => svg(name, extra));
   if (/<i class="bi|bootstrap-icons/.test(built)) throw new Error(`${page}: icon left unconverted`);
   const sprite = `<svg width="0" height="0" style="position:absolute" aria-hidden="true">${[...svgCache.values()].join('')}</svg>`;
-  writeFileSync(`${out}/${page}`, built.replace(/<body([^>]*)>/, (body) => `${body}\n  ${sprite}`));
+  // Sprite goes last: its bytes stay out of the first round trip; <use> resolves symbols defined later
+  writeFileSync(`${out}/${page}`, built.replace('</body>', () => `  ${sprite}\n</body>`));
 });
 
 console.log(`Site built in ${out}/: ${[...pages, ...files].join(', ')}`);

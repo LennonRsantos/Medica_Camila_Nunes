@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Hero photo (LCP) requested first: same srcset/sizes as the <picture> in the hero -->
+  <link rel="preload" as="image" type="image/avif" fetchpriority="high" imagesrcset="assets/camila-nunes-hero-480.avif 480w, assets/camila-nunes-hero-600.avif 600w, assets/camila-nunes-hero-927.avif 927w" imagesizes="(min-width: 720px) 500px, 92vw">
+
   <!-- Google tag (gtag.js) — Google Ads. Conversions are sent from script.js (data-cta clicks) -->
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -70,149 +73,6 @@
   <meta name="twitter:title" content="Dra. Camila Nunes | Saúde da Mulher em Águas Claras - DF">
   <meta name="twitter:description" content="Médica de Família e Comunidade em Águas Claras-DF. Cuidado integral da saúde da mulher, consultas de até 1h30, presencial ou online. Agende pelo WhatsApp.">
   <meta name="twitter:image" content="https://dracamilanunesantos.com.br/assets/camila-nunes-hero.jpg">
-
-  <!-- Schema.org Physician: only data shown on the page -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Physician",
-    "@id": "https://dracamilanunesantos.com.br/#medica",
-    "url": "https://dracamilanunesantos.com.br/",
-    "name": "Dra. Camila Nunes",
-    "description": "Médica de Família e Comunidade especializada no Cuidado Integral da Saúde da Mulher em Águas Claras - DF.",
-    "image": "https://dracamilanunesantos.com.br/assets/camila-nunes-hero.jpg",
-    "medicalSpecialty": "PrimaryCare",
-    "areaServed": [
-      { "@type": "City", "name": "Águas Claras, DF" },
-      { "@type": "City", "name": "Brasília, DF" }
-    ],
-    "knowsLanguage": "pt-BR",
-    "identifier": [
-      { "@type": "PropertyValue", "propertyID": "CRM-DF", "value": "29940" },
-      { "@type": "PropertyValue", "propertyID": "RQE", "value": "26577" }
-    ],
-    "telephone": "+55-61-99331-4896",
-    "email": "dracamilanunesantos@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Águas Claras",
-      "addressRegion": "DF",
-      "addressCountry": "BR"
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "08:00",
-        "closes": "18:00"
-      }
-    ],
-    "sameAs": ["https://instagram.com/camilanuunes"],
-    "priceRange": "R$ 150 - R$ 500",
-    "currenciesAccepted": "BRL",
-    "paymentAccepted": "Pix, cartão de crédito, cartão de débito",
-    "makesOffer": [
-      { "@type": "Offer", "price": "450", "priceCurrency": "BRL", "itemOffered": { "@type": "Service", "name": "Consulta Inicial de Cuidado da Mulher" } },
-      { "@type": "Offer", "price": "400", "priceCurrency": "BRL", "itemOffered": { "@type": "Service", "name": "Consulta de Continuidade do Cuidado" } },
-      { "@type": "Offer", "price": "150", "priceCurrency": "BRL", "itemOffered": { "@type": "Service", "name": "Consulta de Queixa Específica" } },
-      { "@type": "Offer", "price": "500", "priceCurrency": "BRL", "itemOffered": { "@type": "MedicalProcedure", "name": "Inserção / Retirada de Implanon" } },
-      { "@type": "Offer", "price": "150", "priceCurrency": "BRL", "itemOffered": { "@type": "MedicalProcedure", "name": "Exame Preventivo (Papanicolau)" } }
-    ]
-  }
-  </script>
-
-  <!-- Schema.org MedicalWebPage: page content written and reviewed by the physician above -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    "@id": "https://dracamilanunesantos.com.br/#pagina",
-    "url": "https://dracamilanunesantos.com.br/",
-    "name": "Dra. Camila Nunes | Saúde da Mulher em Águas Claras - DF",
-    "inLanguage": "pt-BR",
-    "about": { "@type": "Thing", "name": "Saúde integral da mulher" },
-    "specialty": "https://schema.org/PrimaryCare",
-    "audience": { "@type": "PeopleAudience", "suggestedGender": "female" },
-    "author": { "@id": "https://dracamilanunesantos.com.br/#medica" },
-    "reviewedBy": { "@id": "https://dracamilanunesantos.com.br/#medica" },
-    "lastReviewed": "2026-11-23",
-    "mainEntity": { "@id": "https://dracamilanunesantos.com.br/#medica" }
-  }
-  </script>
-
-  <!-- Schema.org FAQPage: same questions as the FAQ section -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Como agendar uma consulta?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "O agendamento é feito diretamente pelo WhatsApp, na tela de contato desta página. É a forma mais rápida: você fala diretamente com a equipe, tira dúvidas iniciais e escolhe o melhor horário. Os botões de agendamento espalhados pelo site já abrem a conversa com a mensagem pronta — é só enviar."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "O atendimento é presencial ou online?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "As consultas podem ser realizadas presencial ou online, com o mesmo valor nos dois formatos. As consultas presenciais acontecem em consultório em Águas Claras-DF; a opção online atende quem precisa de praticidade ou está fora de Brasília."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Qual a diferença entre a Consulta Inicial e a Consulta de Continuidade?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A Consulta Inicial de Cuidado da Mulher (1h30) é a porta de entrada: construímos juntas a compreensão completa da sua saúde — história, exames e objetivos. A Consulta de Continuidade (1h) é para o acompanhamento: revisar exames, ajustar o plano de cuidado e evoluir o que já foi iniciado. Detalhes de cada formato estão na seção Consultas, acima."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "A Dra. Camila substitui minha ginecologista?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Não. Como o próprio site resume: não substituo a ginecologia, mas amplio a abordagem. O papel da Medicina de Família e Comunidade é olhar a mulher como um todo — conectando ginecologia, saúde hormonal, mental e metabólica — e coordenar o cuidado entre especialistas, para que nada fique fragmentado."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "O que devo levar à primeira consulta?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Para aproveitar bem a hora e meia, idealmente traga: a lista completa de medicamentos em uso, exames recentes que você tenha e anotações sobre seu ciclo menstrual, sintomas e histórico familiar relevante. Não precisa ter tudo perfeito — o essencial é construirmos juntas a história completa."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Onde as consultas acontecem?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "As consultas presenciais acontecem em consultório em Águas Claras-DF, e as online podem ser feitas de qualquer lugar. O atendimento acontece de segunda a sexta, das 08h às 18h."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Posso tirar dúvidas antes de decidir agendar?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sim. O WhatsApp está aberto para dúvidas iniciais antes de agendar — faz parte do cuidado. Uma observação importante: em caso de urgência ou emergência, procure o serviço de urgência mais próximo; o WhatsApp não substitui atendimento de emergência."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "O atendimento é particular? Emite recibo para reembolso?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sim. O atendimento é exclusivamente particular, sem vínculo direto com planos de saúde. Para cada consulta e procedimento é emitido recibo, que você pode utilizar para solicitar o reembolso junto ao seu plano de saúde, conforme as regras do seu contrato. Havendo dúvidas sobre o processo, o WhatsApp está disponível para orientar."
-        }
-      }
-    ]
-  }
-  </script>
 
   <!-- Bootstrap Icons: dev preview only; scripts/build.mjs inlines the SVGs and drops this link -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" integrity="sha384-CK2SzKma4jA5H/MXDUU7i1TqZlCFaD4T01vtyDFvPlD97JQyS+IsSh1nI2EFbpyk" crossorigin="anonymous">
@@ -1425,6 +1285,150 @@
       <button type="button" class="btn btn-primary btn-sm" data-consent="granted">Aceitar</button>
     </div>
   </section>
+
+  <!-- Structured data sits at the end of <body> so its bytes do not delay first paint -->
+  <!-- Schema.org Physician: only data shown on the page -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Physician",
+    "@id": "https://dracamilanunesantos.com.br/#medica",
+    "url": "https://dracamilanunesantos.com.br/",
+    "name": "Dra. Camila Nunes",
+    "description": "Médica de Família e Comunidade especializada no Cuidado Integral da Saúde da Mulher em Águas Claras - DF.",
+    "image": "https://dracamilanunesantos.com.br/assets/camila-nunes-hero.jpg",
+    "medicalSpecialty": "PrimaryCare",
+    "areaServed": [
+      { "@type": "City", "name": "Águas Claras, DF" },
+      { "@type": "City", "name": "Brasília, DF" }
+    ],
+    "knowsLanguage": "pt-BR",
+    "identifier": [
+      { "@type": "PropertyValue", "propertyID": "CRM-DF", "value": "29940" },
+      { "@type": "PropertyValue", "propertyID": "RQE", "value": "26577" }
+    ],
+    "telephone": "+55-61-99331-4896",
+    "email": "dracamilanunesantos@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Águas Claras",
+      "addressRegion": "DF",
+      "addressCountry": "BR"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      }
+    ],
+    "sameAs": ["https://instagram.com/camilanuunes"],
+    "priceRange": "R$ 150 - R$ 500",
+    "currenciesAccepted": "BRL",
+    "paymentAccepted": "Pix, cartão de crédito, cartão de débito",
+    "makesOffer": [
+      { "@type": "Offer", "price": "450", "priceCurrency": "BRL", "itemOffered": { "@type": "Service", "name": "Consulta Inicial de Cuidado da Mulher" } },
+      { "@type": "Offer", "price": "400", "priceCurrency": "BRL", "itemOffered": { "@type": "Service", "name": "Consulta de Continuidade do Cuidado" } },
+      { "@type": "Offer", "price": "150", "priceCurrency": "BRL", "itemOffered": { "@type": "Service", "name": "Consulta de Queixa Específica" } },
+      { "@type": "Offer", "price": "500", "priceCurrency": "BRL", "itemOffered": { "@type": "MedicalProcedure", "name": "Inserção / Retirada de Implanon" } },
+      { "@type": "Offer", "price": "150", "priceCurrency": "BRL", "itemOffered": { "@type": "MedicalProcedure", "name": "Exame Preventivo (Papanicolau)" } }
+    ]
+  }
+  </script>
+
+  <!-- Schema.org MedicalWebPage: page content written and reviewed by the physician above -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "@id": "https://dracamilanunesantos.com.br/#pagina",
+    "url": "https://dracamilanunesantos.com.br/",
+    "name": "Dra. Camila Nunes | Saúde da Mulher em Águas Claras - DF",
+    "inLanguage": "pt-BR",
+    "about": { "@type": "Thing", "name": "Saúde integral da mulher" },
+    "specialty": "https://schema.org/PrimaryCare",
+    "audience": { "@type": "PeopleAudience", "suggestedGender": "female" },
+    "author": { "@id": "https://dracamilanunesantos.com.br/#medica" },
+    "reviewedBy": { "@id": "https://dracamilanunesantos.com.br/#medica" },
+    "lastReviewed": "2026-11-23",
+    "mainEntity": { "@id": "https://dracamilanunesantos.com.br/#medica" }
+  }
+  </script>
+
+  <!-- Schema.org FAQPage: same questions as the FAQ section -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Como agendar uma consulta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O agendamento é feito diretamente pelo WhatsApp, na tela de contato desta página. É a forma mais rápida: você fala diretamente com a equipe, tira dúvidas iniciais e escolhe o melhor horário. Os botões de agendamento espalhados pelo site já abrem a conversa com a mensagem pronta — é só enviar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O atendimento é presencial ou online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As consultas podem ser realizadas presencial ou online, com o mesmo valor nos dois formatos. As consultas presenciais acontecem em consultório em Águas Claras-DF; a opção online atende quem precisa de praticidade ou está fora de Brasília."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual a diferença entre a Consulta Inicial e a Consulta de Continuidade?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Consulta Inicial de Cuidado da Mulher (1h30) é a porta de entrada: construímos juntas a compreensão completa da sua saúde — história, exames e objetivos. A Consulta de Continuidade (1h) é para o acompanhamento: revisar exames, ajustar o plano de cuidado e evoluir o que já foi iniciado. Detalhes de cada formato estão na seção Consultas, acima."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A Dra. Camila substitui minha ginecologista?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. Como o próprio site resume: não substituo a ginecologia, mas amplio a abordagem. O papel da Medicina de Família e Comunidade é olhar a mulher como um todo — conectando ginecologia, saúde hormonal, mental e metabólica — e coordenar o cuidado entre especialistas, para que nada fique fragmentado."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O que devo levar à primeira consulta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para aproveitar bem a hora e meia, idealmente traga: a lista completa de medicamentos em uso, exames recentes que você tenha e anotações sobre seu ciclo menstrual, sintomas e histórico familiar relevante. Não precisa ter tudo perfeito — o essencial é construirmos juntas a história completa."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Onde as consultas acontecem?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As consultas presenciais acontecem em consultório em Águas Claras-DF, e as online podem ser feitas de qualquer lugar. O atendimento acontece de segunda a sexta, das 08h às 18h."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Posso tirar dúvidas antes de decidir agendar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. O WhatsApp está aberto para dúvidas iniciais antes de agendar — faz parte do cuidado. Uma observação importante: em caso de urgência ou emergência, procure o serviço de urgência mais próximo; o WhatsApp não substitui atendimento de emergência."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "O atendimento é particular? Emite recibo para reembolso?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. O atendimento é exclusivamente particular, sem vínculo direto com planos de saúde. Para cada consulta e procedimento é emitido recibo, que você pode utilizar para solicitar o reembolso junto ao seu plano de saúde, conforme as regras do seu contrato. Havendo dúvidas sobre o processo, o WhatsApp está disponível para orientar."
+        }
+      }
+    ]
+  }
+  </script>
 
   <script src="script.js"></script>
 </body>
