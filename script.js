@@ -692,6 +692,7 @@ document.addEventListener('DOMContentLoaded', () => {
       window.removeEventListener('scroll', revealFooter);
       settle(footerName);
       footerName.classList.add('is-revealed');
+      footerName.closest('.site-footer').classList.add('is-uncovered');
     };
     window.addEventListener('scroll', revealFooter, { passive: true });
     afterPaint(revealFooter);

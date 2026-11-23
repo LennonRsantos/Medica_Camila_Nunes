@@ -45,6 +45,14 @@
     position: sticky;
     bottom: 0;
     z-index: 0;
+
+    // Pinned to the viewport bottom, the footer is "on screen" from the first paint even under main,
+    // so its font swap counted as layout shift (~0.27 CLS). Transparent until main's end comes near.
+    @supports (animation-timeline: view()) {
+      animation: footer-uncover linear both;
+      animation-timeline: --page; // after the shorthand, which resets it
+      animation-range: contain 90% contain 100%;
+    }
   }
 
   @include up(lg) {
@@ -52,8 +60,28 @@
   }
 }
 
+// main's scroll progress drives the footer (body is their shared ancestor)
+@include up(md) {
+  @supports (animation-timeline: view()) {
+    body {
+      timeline-scope: --page;
+    }
+
+    main {
+      view-timeline: --page block;
+    }
+  }
+}
+
+@keyframes footer-uncover {
+  from {
+    opacity: 0;
+  }
+}
+
 @include motion-ok {
-  .site-footer::after {
+  // Runs only once the footer shows: animating while the page height settles on load counted as CLS
+  .site-footer.is-uncovered::after {
     animation: aurora 30s ease-in-out infinite alternate;
   }
 }
